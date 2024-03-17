@@ -1,3 +1,6 @@
 a=10
 
-echo $a
+if [ a -nq 0 ]; then
+  echo "your eligible for love"
+fi
+
