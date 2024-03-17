@@ -7,3 +7,6 @@ if [ $? -eq 0 ]; then
 fi
 
 echo "***Helloworld***"
+
+
+echo -e "\e[31m BAAP BAAP HOTA HAI \e[0m"
