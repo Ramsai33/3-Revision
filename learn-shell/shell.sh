@@ -1,6 +1,6 @@
 a=10
 echo $a
-if [ a -eq 0 ]; then
+if [ $? -eq 0 ]; then
   echo "your eligible for love"
   else
     echo "your bokka"
