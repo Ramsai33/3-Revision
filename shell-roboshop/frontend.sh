@@ -1,7 +1,7 @@
 import common.sh
 
 echo -e '\e[33m Install nginx\e[0m'
-yum install nginx -y &&>>${log}
+yum install nginx -y &>>${log}
 status
 
 echo -e '\e[33m enable nginx\e[0m'
