@@ -1,3 +1,4 @@
+script_location=$(pwd)
 
 yum module disable nodejs -y
 
