@@ -12,7 +12,7 @@ print_head "Enable Mongo"
 systemctl enable mongod &>>${log}
 status
 
-print_head"Start Mongo"
+print_head "Start Mongo"
 systemctl start mongod &>>${log}
 status
 
