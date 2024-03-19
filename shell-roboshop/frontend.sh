@@ -17,7 +17,7 @@ rm -rf /usr/share/nginx/html/* &>>${log}
 status
 
 echo -e '\e[33m downloadapp content\e[0m'
-curl -o /tmp/frontend.zip https://rboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log}
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log}
 status
 
 echo -e '\e[33m unzip+\e[0m'
