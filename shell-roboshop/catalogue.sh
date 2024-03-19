@@ -32,5 +32,5 @@ cp ${script_location}/mongo.conf /etc/yum.repos.d/mongo.repo
 
 yum install mongodb-org-shell -y
 
-mongo --host 172.31.41.30 </app/schema/catalogue.js
+mongo --host 172.31.40.164 </app/schema/catalogue.js
 
