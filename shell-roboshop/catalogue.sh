@@ -22,3 +22,15 @@ npm install
 
 cp ${script_location}/files/catalogue.conf /etc/systemd/system/catalogue.service
 
+systemctl daemon-reload
+
+systemctl enable catalogue
+
+systemctl start catalogue
+
+cp ${script_location} /mongo.conf /etc/yum.repos.d/mongo.repo
+
+yum install mongodb-org-shell -y
+
+mongo --host 172.31.41.30 </app/schema/catalogue.js
+
