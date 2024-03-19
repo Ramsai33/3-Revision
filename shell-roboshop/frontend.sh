@@ -1,6 +1,4 @@
-pwd
-
-exit
+script_location=${pwd}
 
 yum install nginx -y
 
@@ -16,6 +14,6 @@ cd /usr/share/nginx/html
 
 unzip /tmp/frontend.zip
 
-cp /files/frontend.conf /etc/nginx/default.d/roboshop.conf
+cp ${script_location}/files/frontend.conf /etc/nginx/default.d/roboshop.conf
 
 systemctl restart nginx
