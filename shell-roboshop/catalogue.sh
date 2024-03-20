@@ -13,9 +13,8 @@ if [ $? -ne 0 ]; then
   useradd roboshop
 fi
 
-rm -rf /app
+mkdir -p /app
 
-mkdir /app
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
 
