@@ -7,7 +7,11 @@ yum module enable nodejs:18 -y
 
 yum install nodejs -y
 
-useradd roboshop
+
+id roboshop
+if [ $? -ne 0 ]; then
+  useradd roboshop
+fi
 
 mkdir /app
 
