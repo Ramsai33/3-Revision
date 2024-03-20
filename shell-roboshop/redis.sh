@@ -1,3 +1,4 @@
+set -e
 
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
 
