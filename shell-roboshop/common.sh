@@ -13,3 +13,19 @@ else
 exit
 fi
 }
+
+nodejs() {
+
+print_head "Disable Repo"
+yum module disable nodejs -y &>>${log}
+status
+
+print_head "Enable Nodejs"
+yum module enable nodejs:18 -y &>>${log}
+status
+
+print_head "InstallNodejs"
+yum install nodejs -y &>>${log}
+status
+
+}
