@@ -58,6 +58,7 @@ systemd() {
 }
 
 schema_load() {
+  if [ $schema_load == "true" ]; then
 
   print_head "Copy Mongo repo"
   cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
@@ -70,7 +71,8 @@ schema_load() {
   print_head "Load Schema"
   mongo --host 172.31.40.164 </app/schema/${component}.js &>>${log}
   status
-
+exit
+fi
 }
 
 nodejs() {
