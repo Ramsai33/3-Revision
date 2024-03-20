@@ -26,8 +26,8 @@ AppPre_req() {
   mkdir -p /app &>>${log}
   status
 
-  print_head "Download Catalogue content"
-  curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>${log}
+  print_head "Download ${component} content"
+  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
   status
 
   print_head "remove app content"
@@ -37,7 +37,7 @@ AppPre_req() {
   cd /app &>>${log}
 
   print_head "UnZip"
-  unzip /tmp/catalogue.zip &>>${log}
+  unzip /tmp/${component}.zip &>>${log}
   status
 }
 
@@ -48,11 +48,11 @@ systemd() {
   status
 
   print_head "Enable service"
-  systemctl enable catalogue &>>${log}
+  systemctl enable ${component} &>>${log}
   status
 
   print_head "start service"
-  systemctl start catalogue &>>${log}
+  systemctl start ${component} &>>${log}
   status
 
 }
@@ -68,7 +68,7 @@ schema_load() {
   status
 
   print_head "Load Schema"
-  mongo --host 172.31.40.164 </app/schema/catalogue.js &>>${log}
+  mongo --host 172.31.40.164 </app/schema/${component}.js &>>${log}
   status
 
 }
@@ -97,7 +97,7 @@ nodejs() {
   status
 
   print_head "Copy File"
-  cp ${script_location}/files/catalogue.conf /etc/systemd/system/catalogue.service &>>${log}
+  cp ${script_location}/files/${component}.conf /etc/systemd/system/${component}.service &>>${log}
   status
 
   systemd
