@@ -58,21 +58,26 @@ systemd() {
 }
 
 schema_load() {
-  if [ "${schema_load}" == "true" ]; then
+if [ "${schema_load}" == "true" ]; then
+    if [ "${schema_type}" == "mongodb" ]; then
 
-  print_head "Copy Mongo repo"
-  cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
-  status
+         print_head "Copy Mongo repo"
+         cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
+         status
 
-  print_head "Install Mongo"
-  yum install mongodb-org-shell -y &>>${log}
-  status
+         print_head "Install Mongo"
+         yum install mongodb-org-shell -y &>>${log}
+         status
 
-  print_head "Load Schema"
-  mongo --host 172.31.40.164 </app/schema/${component}.js &>>${log}
-  status
-exit
-fi
+         print_head "Load Schema"
+         mongo --host 172.31.40.164 </app/schema/${component}.js &>>${log}
+         status
+         exit
+    fi
+    if [ "${schema_type}" == "mysql" ]; then
+          echo "mysql"
+       exit
+    fi
 }
 
 nodejs() {
