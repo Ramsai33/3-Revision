@@ -25,26 +25,6 @@ print_head "Copy File"
 cp ${script_location}/files/catalogue.conf /etc/systemd/system/catalogue.service &>>${log}
 status
 
-print_head "Demon freload"
-systemctl daemon-reload &>>${log}
-status
+systemd
 
-print_head "Enable service"
-systemctl enable catalogue &>>${log}
-status
-
-print_head "start service"
-systemctl start catalogue &>>${log}
-status
-
-print_head "Copy Mongo repo"
-cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
-status
-
-print_head "Install Mongo"
-yum install mongodb-org-shell -y &>>${log}
-status
-
-print_head "Load Schema"
-mongo --host 172.31.40.164 </app/schema/catalogue.js &>>${log}
-status
+schema_load

@@ -16,7 +16,7 @@ fi
 
 AppPre_req() {
   print_head "User add"
-  id roboshop
+  id roboshop &>>${log}
   if [ $? -ne 0 ]; then
     useradd roboshop &>>${log}
   fi
@@ -39,4 +39,36 @@ AppPre_req() {
   print_head "UnZip"
   unzip /tmp/catalogue.zip &>>${log}
   status
+}
+
+systemd() {
+
+  print_head "Demon reload"
+  systemctl daemon-reload &>>${log}
+  status
+
+  print_head "Enable service"
+  systemctl enable catalogue &>>${log}
+  status
+
+  print_head "start service"
+  systemctl start catalogue &>>${log}
+  status
+
+}
+
+schema_load() {
+
+  print_head "Copy Mongo repo"
+  cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
+  status
+
+  print_head "Install Mongo"
+  yum install mongodb-org-shell -y &>>${log}
+  status
+
+  print_head "Load Schema"
+  mongo --host 172.31.40.164 </app/schema/catalogue.js &>>${log}
+  status
+
 }
