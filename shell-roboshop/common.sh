@@ -58,7 +58,7 @@ systemd() {
 }
 
 schema_load() {
-  if [ $schema_load == "true" ]; then
+  if [ "${schema_load}" == "true" ]; then
 
   print_head "Copy Mongo repo"
   cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
