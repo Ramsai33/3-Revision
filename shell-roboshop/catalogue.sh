@@ -12,7 +12,7 @@ print_head "InstallNodejs"
 yum install nodejs -y &>>${log}
 status
 
-
+AppPre_req
 
 print_head "Chnge dir"
 cd /app &>>${log}
