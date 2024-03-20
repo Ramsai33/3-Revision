@@ -13,7 +13,7 @@ if [ $? -ne 0 ]; then
   useradd roboshop
 fi
 
-rm -rf /app/*
+rm -rf /app
 
 mkdir /app
 
