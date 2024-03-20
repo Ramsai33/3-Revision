@@ -1,44 +1,73 @@
-script_location=$(pwd)
-set -e
+source common.sh
 
-yum module disable nodejs -y
+print_head "Disable Repo"
+yum module disable nodejs -y &>>${log}
+status
 
-yum module enable nodejs:18 -y
+print_head "Enable Nodejs"
+yum module enable nodejs:18 -y &>>${log}
+status
 
-yum install nodejs -y
+print_head "InstallNodejs"
+yum install nodejs -y &>>${log}
+status
 
-
+print_head "User add"
 id roboshop
 if [ $? -ne 0 ]; then
-  useradd roboshop
+  useradd roboshop &>>${log}
 fi
+status
 
-mkdir -p /app
+print_head "creating app"
+mkdir -p /app &>>${log}
+status
 
+print_head "Download Catalogue content"
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>${log}
+status
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
-
+print_head "remove app content"
 rm -rf /app/*
+status
 
-cd /app
+cd /app &>>${log}
 
-unzip /tmp/catalogue.zip
+print_head "UnZip"
+unzip /tmp/catalogue.zip &>>${log}
+status
 
-cd /app
+print_head "Chnge dir"
+cd /app &>>${log}
+status
+print_head "NPM Install"
+npm install &>>${log}
+status
 
-npm install
+print_head "Copy File"
+cp ${script_location}/files/catalogue.conf /etc/systemd/system/catalogue.service &>>${log}
+status
 
-cp ${script_location}/files/catalogue.conf /etc/systemd/system/catalogue.service
+print_head "Demon freload"
+systemctl daemon-reload &>>${log}
+status
 
-systemctl daemon-reload
+print_head "Enable service"
+systemctl enable catalogue &>>${log}
+status
 
-systemctl enable catalogue
+print_head "start service"
+systemctl start catalogue &>>${log}
+status
 
-systemctl start catalogue
+print_head "Copy Mongo repo"
+cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
+status
 
-cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo
+print_head "Install Mongo"
+yum install mongodb-org-shell -y &>>${log}
+status
 
-yum install mongodb-org-shell -y
-
-mongo --host 172.31.40.164 </app/schema/catalogue.js
-
+print_head "Load Schema"
+mongo --host 172.31.40.164 </app/schema/catalogue.js &>>${log}
+status
