@@ -1,7 +1,7 @@
 source common.sh
 component=catalogue
 schema_load=true
-schema_type=mysql
+schema_type=mongodb
 nodejs
 
 
