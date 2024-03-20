@@ -78,6 +78,7 @@ if [ "${schema_load}" == "true" ]; then
           echo "mysql"
        exit
     fi
+fi
 }
 
 nodejs() {
