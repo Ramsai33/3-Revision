@@ -73,7 +73,7 @@ if [ "$schema" = "true" ]; then
       status
 
       head "Schema into mongo server"
-      mongo --host MONGODB-SERVER-IPADDRESS </app/schema/${component}.js
+      mongo --host 172.31.38.96 </app/schema/${component}.js
       status
   fi
   if [ "$schema_type" = "mysql" ]; then
