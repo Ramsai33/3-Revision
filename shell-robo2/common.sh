@@ -21,7 +21,7 @@ status() {
 AppPreReq() {
 
   head "Add roboshop"
-  id roboshop
+  id roboshop &>>${log}
   if [ $? -ne 0 ]; then
     useradd roboshop &>>${log}
   fi
@@ -29,6 +29,8 @@ AppPreReq() {
   head "Add Directory"
   mkdir -p /app &>>${log}
   status
+
+  rm -rf /app*
 
   head "Download APP content"
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
