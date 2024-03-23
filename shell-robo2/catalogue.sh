@@ -2,5 +2,5 @@ source common.sh
 
 component=catalogue
 schema=true
-schema_type=mongo
+schema_type=mysql
 Nodejs
