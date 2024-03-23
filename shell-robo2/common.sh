@@ -26,8 +26,6 @@ AppPreReq() {
     useradd roboshop &>>${log}
   fi
 
-  rm -rf /app/*
-
   head "Add Directory"
   mkdir -p /app &>>${log}
   status
@@ -36,6 +34,8 @@ AppPreReq() {
   head "Download APP content"
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
   status
+
+  rm -rf /app/*
 
   cd /app
 
