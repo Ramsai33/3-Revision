@@ -1,6 +1,6 @@
 source common.sh
 
 component=catalogue
-schema=true
+schema=false
 schema_type=mysql
 Nodejs
