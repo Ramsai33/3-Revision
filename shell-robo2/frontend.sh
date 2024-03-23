@@ -1,7 +1,7 @@
 source common.sh
 
 head "Install Nginx"
-yum install nginx -y  -y &>>${log}
+dnf install nginx -y  -y &>>${log}
 status
 
 head "Enable nginx"
