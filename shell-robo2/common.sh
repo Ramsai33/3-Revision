@@ -23,43 +23,43 @@ AppPreReq() {
   head "Add roboshop"
   id roboshop
   if [ $? -ne 0 ]; then
-    useradd roboshop
+    useradd roboshop &>>${log}
   fi
 
   head "Add Directory"
-  mkdir -p /app
+  mkdir -p /app &>>${log}
   status
 
   head "Download APP content"
-  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
+  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
   status
 
   cd /app
 
   head "Extract App Content"
-  unzip /tmp/${component}.zip
+  unzip /tmp/${component}.zip &>>${log}
   status
 
-  cd /app
+  cd /app &>>${log}
 
 }
 
 Demonload() {
 
   head "Copy Conf"
-  cp ${script_location}/files/${component}.conf /etc/systemd/system/${component}.service
+  cp ${script_location}/files/${component}.conf /etc/systemd/system/${component}.service &>>${log}
   status
 
   head "Deman reload"
-  systemctl daemon-reload
+  systemctl daemon-reload &>>${log}
   status
 
   head "Enable service"
-  systemctl enable ${component}
+  systemctl enable ${component} &>>${log}
   status
 
   head "Start Service"
-  systemctl start ${component}
+  systemctl start ${component} &>>${log}
   status
 
 }
@@ -69,11 +69,11 @@ schema_load() {
 if [ "$schema" = "true" ]; then
   if [ "$schema_type" = "mongodb" ]; then
       head "Install Mongo"
-      yum install mongodb-org-shell -y
+      yum install mongodb-org-shell -y &>>${log}
       status
 
       head "Schema into mongo server"
-      mongo --host 172.31.38.96 </app/schema/${component}.js
+      mongo --host 172.31.38.96 </app/schema/${component}.js &>>${log}
       status
   fi
   if [ "$schema_type" = "mysql" ]; then
@@ -86,27 +86,27 @@ fi
 Nodejs() {
 
   head "Disable nodejs"
-  yum module disable nodejs -y
+  yum module disable nodejs -y &>>${log}
   status
 
   head "enable nodejs"
-  yum module enable nodejs:18 -y
+  yum module enable nodejs:18 -y &>>${log}
   status
 
   head "Install Nodejs"
-  yum install nodejs
+  yum install nodejs -y &>>${log}
   status
 
   AppPreReq
 
   head "NPM Install"
-  npm install
+  npm install &>>${log}
   status
 
   Demonload
 
    head "Copy Mongo repo"
-    cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo
+    cp ${script_location}/files/mongo.conf /etc/yum.repos.d/mongo.repo &>>${log}
     status
 
   schema_load
