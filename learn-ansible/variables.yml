@@ -34,7 +34,7 @@
   connection: local
   tasks:
     - name: access variable from inv
-      ansibile.builtin.debug:
+      ansible.builtin.debug:
         msg: URL == {{URL}}
 
 
