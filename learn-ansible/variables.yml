@@ -29,5 +29,14 @@
         msg: URL == {{URL}}
 
 
+- name: Declare variable on inv
+  hosts: all
+  connection: local
+  tasks:
+    - name: access variable from inv
+      ansibile.builtin.debug:
+        msg: URL == {{URL}}
+
+
 
 
