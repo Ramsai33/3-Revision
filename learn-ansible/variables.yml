@@ -13,10 +13,10 @@
   connection: local
   tasks:
     - name: Declare and Access variable on task level
-        ansible.builtin.debug:
+      ansible.builtin.debug:
           msg: URL == {{URL}}
-         vars:
-           URL: Task.example.com
+      vars:
+        URL: Task.example.com
 
 
 
