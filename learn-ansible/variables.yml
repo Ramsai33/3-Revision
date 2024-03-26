@@ -18,6 +18,16 @@
       vars:
         URL: Task.example.com
 
+- name: Declare variable on file
+  hosts: all
+  connection: local
+  vars_files:
+    - var.yml
+  tasks:
+    - name: access variable from another file
+      ansible.builtin.debug:
+        msg: URL == {{URL}}
+
 
 
 
