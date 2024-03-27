@@ -31,20 +31,20 @@
         msg: URL == {{URL}}
 
 
-- name: Access variable from inv
-  hosts: all
-  connection: local
-  tasks:
-    - name: Access from INV
-      ansible.builtin.debug:
-        msg: URL == {{URL}}
-
-
-
-#- name: Declare variable on inv
+#- name: Access variable from inv
 #  hosts: all
 #  connection: local
 #  tasks:
-#    - name: access variable from inv
+#    - name: Access from INV
 #      ansible.builtin.debug:
 #        msg: URL == {{URL}}
+
+
+
+- name: Declare variable on inv
+  hosts: all
+  connection: local
+  tasks:
+    - name: access variable from inv
+      ansible.builtin.debug:
+        msg: URL == {{URL}}
