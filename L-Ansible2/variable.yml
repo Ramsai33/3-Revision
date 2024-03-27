@@ -1,6 +1,6 @@
 - name: Declare variable on playlevel
   hosts: all
-  connections: local
+  connection: local
   vars:
     URL: play.example.com
   tasks:
@@ -9,7 +9,7 @@
 
 - name: Declare variable on task level
   hosts: all
-  connections: local
+  connection: local
   tasks:
     - name: Access variable on task level
       ansible.builtin.debug:
@@ -19,9 +19,9 @@
 
 - name: Declare variable on file
   hosts: all
-  connections: local
+  connection: local
   vars_files:
-    - variable.yml
+    - var.yml
   tasks:
     - name: access variable from file
       ansible.builtin.debug:
