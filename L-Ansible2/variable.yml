@@ -31,3 +31,10 @@
         msg: URL == {{URL}}
 
 
+- name: Access variable from inv
+  hosts: all
+  connection: local
+  tasks:
+    -name: Access from INV
+     ansible.builtin.debug:
+       msg: URL == {{URL}}
