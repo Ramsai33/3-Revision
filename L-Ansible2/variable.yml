@@ -35,6 +35,6 @@
   hosts: all
   connection: local
   tasks:
-    -name: Access from INV
-     ansible.builtin.debug:
-       msg: URL == {{URL}}
+    - name: Access from INV
+      ansible.builtin.debug:
+        msg: URL == {{URL}}
