@@ -6,5 +6,5 @@
       ansible.builtin.debug:
         msg: My name is {{item}} and my nik name is {{nickname}}
       loop:
-        - { item: "Ram" nickname: "Kin" }
-        - { item: "krishna" nickname: "Krish" }
+        - { item: "Ram" , nickname: "Kin" }
+        - { item: "krishna" , nickname: "Krish" }
