@@ -2,7 +2,7 @@
   hosts: all
   connection: local
   vars:
-    URL:play.example.com
+    URL: play.example.com
   tasks:
     - name: access variable on play level
       ansible.builtin.debug:
