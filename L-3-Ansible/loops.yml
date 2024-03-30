@@ -4,7 +4,7 @@
   tasks:
     - name: Loops
       ansible.builtin.debug:
-        msg: My name is {{item}} and my nik name is {{nickname}}
+        msg: My name is {{item.name}} and my nik name is {{item.nickname}}
       loop:
-        - { item: "Ram" , nickname: "Kin" }
-        - { item: "krishna" , nickname: "Krish" }
+        - { name: "Ram" , nickname: "Kin" }
+        - { name: "krishna" , nickname: "Krish" }
