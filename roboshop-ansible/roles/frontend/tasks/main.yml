@@ -22,7 +22,7 @@
 
 - name: Copy config file
   ansible.builtin.copy:
-    src: /files/nginx.conf
+    src: nginx.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Enable service httpd, and not touch the state
