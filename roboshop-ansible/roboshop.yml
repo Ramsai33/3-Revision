@@ -1,5 +1,6 @@
 - name: roboshop setup
   hosts: "{{HOSTS}}"
+  become: yes
   connection: local
   roles:
     - "{{ROLE_NAME}}"
