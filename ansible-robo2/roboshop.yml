@@ -1,0 +1,6 @@
+- name: RoboShop setup
+  hosts: all
+  become: yes
+  connection: local
+  roles:
+    - "{{ROLE_NAME}}"
