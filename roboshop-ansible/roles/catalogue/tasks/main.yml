@@ -1,7 +1,5 @@
 - name: Downloading Repo
-  ansible.builtin.shell:
-  dnf module disable nodejs
-  dnf module enable nodejs:18
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 - name: Install Nodejs
   ansible.builtin.yum:
