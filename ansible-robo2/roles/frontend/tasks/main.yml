@@ -1,3 +1,32 @@
-- name: Print
-  ansible.builtin.debug:
-    msg: Hello from Frontend
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+- name: Remove Default content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/
+    state: absent
+
+- name: create directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
+
+- name: Unarchive a file
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Enable service
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
