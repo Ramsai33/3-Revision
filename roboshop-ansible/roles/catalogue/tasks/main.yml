@@ -43,6 +43,11 @@
     enabled: true
     state: started
 
+- name: Copy file
+  ansible.builtin.copy:
+    src: mongo.conf
+    dest: /etc/yum.repos.d/mongo.repo
+
 - name: Install Mongodb
   ansible.builtin.yum:
     name: mongodb-org-shell
