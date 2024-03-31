@@ -1,0 +1,27 @@
+- name: Downloading Repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install Nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: App Prereq
+  ansible.builtin.include_tasks: Appprereq.yml
+
+
+- name: Install Npm
+  community.general.npm:
+    path: /app
+    state: latest
+
+- name: App Prereq
+  ansible.builtin.include_tasks: systemd.yml
+
+
+- name: App Prereq
+  ansible.builtin.include_tasks: mongo-schema.yml
+  when: schema_load
+
+
+
