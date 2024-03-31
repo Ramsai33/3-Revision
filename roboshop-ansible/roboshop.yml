@@ -1,6 +1,11 @@
-- name: roboshop setup
-  hosts: "{{HOSTS}}"
+#- name: roboshop setup
+#  hosts: "{{HOSTS}}"
+#  become: yes
+#  roles:
+#    - "{{ROLE_NAME}}"
+
+- name: Roboshop setup
+  hosts: all
   become: yes
-  connection: local
   roles:
     - "{{ROLE_NAME}}"
