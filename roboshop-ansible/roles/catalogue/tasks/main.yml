@@ -31,15 +31,12 @@
     path: /app
     state: latest
 
-- name: demon reload
-  ansible.builtin.systemd_service:
-    daemon_reload: true
-
-- name: Enable service
-  ansible.builtin.service:
+- name: Daemon reload
+  ansible.builtin.systemd:
     name: catalogue
+    daemon_reload: true
+    enabled: true
     state: started
-    enabled: yes
 
 - name: Install Mongodb
   ansible.builtin.yum:
