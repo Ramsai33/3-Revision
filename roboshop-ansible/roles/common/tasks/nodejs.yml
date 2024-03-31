@@ -20,7 +20,7 @@
 
 
 - name: schema_load
-  ansible.builtin.include_tasks: mongo-schema.yml
+  ansible.builtin.include_tasks: "{{schema-type}}-schema.yml"
 
 
 
