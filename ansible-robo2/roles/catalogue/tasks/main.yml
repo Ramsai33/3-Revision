@@ -1,0 +1,58 @@
+- name: Downloading Repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Add the user Roboshop
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Remove app
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: create directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Unarchive a file
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+    dest: /app
+    remote_src: yes
+
+- name: Npm install
+  community.general.npm:
+    path: /app
+    state: latest
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: catalogue.conf
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Daemon reload
+  ansible.builtin.systemd:
+    name: catalogue
+    daemon_reload: true
+    enabled: true
+    state: started
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: mongo.conf
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongo
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+- name: Load schema
+  ansible.builtin.shell: mongo --host 172.31.35.36 </app/schema/catalogue.js
+
