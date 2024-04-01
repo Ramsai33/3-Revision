@@ -18,16 +18,5 @@
   ansible.builtin.include_tasks: systemd.yml
 
 
-- name: Copy config file
-  ansible.builtin.copy:
-    src: mongo.conf
-    dest: /etc/yum.repos.d/mongo.repo
-
-- name: Install mongo
-  ansible.builtin.yum:
-    name: mongodb-org-shell
-    state: installed
-
-- name: Load schema
-  ansible.builtin.shell: mongo --host 172.31.35.36 </app/schema/catalogue.js
-
+- name: Systemd
+  ansible.builtin.include_tasks: mongo-schema.yml
