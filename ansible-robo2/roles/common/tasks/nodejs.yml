@@ -14,17 +14,9 @@
     path: /app
     state: latest
 
-- name: Copy config file
-  ansible.builtin.copy:
-    src: catalogue.conf
-    dest: /etc/systemd/system/catalogue.service
+- name: Systemd
+  ansible.builtin.include_tasks: systemd.yml
 
-- name: Daemon reload
-  ansible.builtin.systemd:
-    name: catalogue
-    daemon_reload: true
-    enabled: true
-    state: started
 
 - name: Copy config file
   ansible.builtin.copy:

@@ -1,0 +1,11 @@
+- name: Copy config file
+  ansible.builtin.copy:
+    src: catalogue.conf
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Daemon reload
+  ansible.builtin.systemd:
+    name: catalogue
+    daemon_reload: true
+    enabled: true
+    state: started
