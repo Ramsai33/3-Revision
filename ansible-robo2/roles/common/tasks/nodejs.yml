@@ -1,0 +1,41 @@
+- name: Downloading Repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: App Prereq
+  ansible.builtin.include_tasks: appprereq.yml
+
+- name: Npm install
+  community.general.npm:
+    path: /app
+    state: latest
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: catalogue.conf
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Daemon reload
+  ansible.builtin.systemd:
+    name: catalogue
+    daemon_reload: true
+    enabled: true
+    state: started
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: mongo.conf
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongo
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+- name: Load schema
+  ansible.builtin.shell: mongo --host 172.31.35.36 </app/schema/catalogue.js
+
