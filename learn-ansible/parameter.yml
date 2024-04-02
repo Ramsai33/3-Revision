@@ -1,2 +1,7 @@
+
 - name: lookup ssm parameter store in nominated region
-  debug: msg="{{ lookup('aws_ssm', 'test', region='us-east-1' ) }}"
+  hosts: all
+  connection: local
+  tasks:
+    - name: lookup ssm parameter store in nominated region
+      debug: msg="{{ lookup('aws_ssm', 'test', region='us-east-1' ) }}"
