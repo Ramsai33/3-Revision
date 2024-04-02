@@ -1,6 +1,5 @@
 
 - name: lookup ssm parameter store in nominated region
-  hosts: localhost
   connection: local
   tasks:
     - name: create parameter
