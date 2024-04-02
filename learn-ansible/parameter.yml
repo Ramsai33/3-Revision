@@ -4,4 +4,4 @@
   connection: local
   tasks:
     - debug:
-        msg="{{ lookup('aws_ssm', 'test', region='us-east-1' ) }}"
+        msg="{{ lookup('aws_ssm', 'Ram', region='us-east-1' ) }}"
