@@ -7,3 +7,4 @@
       community.aws.ssm_parameter:
         name: "Hello"
         value: "world"
+        region: "us-east-1"
