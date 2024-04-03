@@ -6,5 +6,5 @@
     - name: create parameter
       community.aws.ssm_parameter:
         name: "Hello"
-        value: "world"
+        value: "Akhila I Love You"
         region: "us-east-1"
