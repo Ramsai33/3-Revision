@@ -8,3 +8,6 @@
         name: "Hello"
         value: "Akhila I Love You"
         region: "us-east-1"
+
+    - name: Access variable
+      debug: msg="{{ lookup('amazon.aws.aws_ssm', 'test', region='us-east-1' ) }}"
