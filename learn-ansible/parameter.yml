@@ -10,3 +10,4 @@
         region: "us-east-1"
       loop:
         - {name: "tes2", value: "RAM"}
+        - {name: "tes3", value: "chotu"}
