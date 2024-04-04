@@ -5,9 +5,8 @@
   tasks:
     - name: create parameter
       community.aws.ssm_parameter:
-        name: "Hello"
-        value: "Akhila I Love You"
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
         region: "us-east-1"
-
-    - name: Access variable
-      debug: msg="{{ lookup('amazon.aws.aws_ssm', 'Hello', region='us-east-1' ) }}"
+      loop:
+        - {name: "tes2", value: "RAM"}
