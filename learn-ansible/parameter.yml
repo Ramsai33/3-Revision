@@ -10,4 +10,4 @@
         region: "us-east-1"
 
     - name: Access variable
-      debug: msg="{{ lookup('amazon.aws.aws_ssm', 'test', region='us-east-1' ) }}"
+      debug: msg="{{ lookup('amazon.aws.aws_ssm', 'Hello', region='us-east-1' ) }}"
