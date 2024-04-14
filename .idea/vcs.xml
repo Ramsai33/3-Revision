@@ -10,6 +10,7 @@
     <mapping directory="$PROJECT_DIR$/payment1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/roboshop-jenkins-shared-library2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/roboshop-jenkins1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/shipping1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/user1" vcs="Git" />
   </component>
 </project>
