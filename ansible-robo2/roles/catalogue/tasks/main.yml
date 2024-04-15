@@ -1,4 +1,0 @@
-- name: Systemd
-  ansible.builtin.include_role:
-    role: common
-    tasks_from: nodejs
