@@ -7,6 +7,7 @@
     <mapping directory="$PROJECT_DIR$/catalogue1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dispatch1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/frontend1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/jenkins-shared-library" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/payment1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/roboshop-jenkins-shared-library2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/roboshop-jenkins1" vcs="Git" />
